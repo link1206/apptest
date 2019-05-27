@@ -33,7 +33,7 @@
             var isAndroid = sUserAgent.match(/android/i) == "android";
             var isXiaoMi = sUserAgent.match(/xiaomi/i) == "xiaomi";
             if (isAndroid || isXiaoMi) {
-                alert('安卓-baidu');
+                alert('安卓');
                 document.getElementById('openAndroidApp').click();
                 // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
                 // 否则打开a标签的href链接
@@ -226,7 +226,7 @@
 </div>
 
 <a href="com.qlteacher.quan://" id="openIosApp" style="display: none">ios</a>
-<a href="http://www.baidu.com" id="openAndroidApp" style="display: none">android</a>
+<a href="intent://quan.qlteacher.com/#Intent;scheme=http;package=com.qlteacher.app.main" id="openAndroidApp" style="display: none">android</a>
 
 <div class="info">如果您还没有安装老师圈app，<br>请点击立即下载</div>
 <input type="button" id="btn" name="btn" class="btn_download" onclick="fBrowserRedirect();" value="立即下载"/>
