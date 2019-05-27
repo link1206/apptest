@@ -13,31 +13,29 @@
 
     <script type="text/javascript">
         $(document).ready(
-            function(){
+            function () {
                 checkAppInstalled();
             }
         );
-       /* wx.ready(
-            checkAppInstalled()
-        );*/
-       /* window.onload = function(){
-            alert('window.onload');
-            checkAppInstalled();
-        }*/
+        /* wx.ready(
+             checkAppInstalled()
+         );*/
+        /* window.onload = function(){
+             alert('window.onload');
+             checkAppInstalled();
+         }*/
 
         //判断手机是否已经安装了app
         function checkAppInstalled() {
             alert('checkAppInstalled');
             var sUserAgent = navigator.userAgent.toLowerCase();
-            alert('sUserAgent' + sUserAgent);
-            var isAndroid = sUserAgent.match(/android/i) == "android";
-            var isXiaoMi = sUserAgent.match(/xiaomi/i) == "xiaomi";
+            var isAndroid = sUserAgent.match(/android/i);
+            var isXiaoMi = sUserAgent.match(/xiaomi/i);
             if (isAndroid || isXiaoMi) {
-                alert('安卓');
                 document.getElementById('openAndroidApp').click();
-                // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+                /*// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
                 // 否则打开a标签的href链接
-                /*var isInstalled;
+                var isInstalled;
                 //下面是安卓端APP接口调用的地址，自己根据情况去修改
                 var ifrSrc = 'com.qlteacher.app.main.MainActivity://';
                 var ifr = document.createElement('iframe');
@@ -57,11 +55,12 @@
                     document.body.removeChild(ifr);
                 }, 1000);*/
 
-            } else  if (navigator.userAgent.match(/(iPhone|iPad);?/i)){
+            } else if (navigator.userAgent.match(/(iPhone|iPad);?/i)) {
                 alert('ios');
-                //window.location.href =  'com.qlteacher.quan://';
+                window.location.href = 'quanApp://';
+                /*
                 //ios判断
-                /*document.getElementById('openIosApp').onclick = function (e) {
+                document.getElementById('openIosApp').onclick = function (e) {
                     // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
                     // 否则打开a标签的href链接
                     alert('openIosApp');
@@ -74,9 +73,7 @@
                         document.body.removeChild(ifr);
                     }, 3000)
                 };*/
-
-                alert('openIosApp-click');
-                document.getElementById('openIosApp').click();
+                /*document.getElementById('openIosApp').click();*/
 
 
                 /*var isInstalled;
@@ -107,12 +104,12 @@
             var iso_url = "https://itunes.apple.com/cn/app/id1459354618";
             var android_url = "https://quan.qlteacher.com/assets/app/teacher-quan.apk" + '?timestamp=' + new Date().getTime() + Math.random();
             var sUserAgent = navigator.userAgent.toLowerCase();
-            var isIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-            var isAndroid = sUserAgent.match(/android/i) == "android";
-            var isXiaoMi = sUserAgent.match(/xiaomi/i) == "xiaomi";
-            var isWX = sUserAgent.match(/micromessenger/i) == "micromessenger";
-            var isWeiBo = sUserAgent.match(/weibo/i) == "weibo";
-            var isAlipay = sUserAgent.match(/alipay/i) == "alipay";
+            var isIphoneOs = sUserAgent.match(/(iPhone|iPad);?/i);
+            var isAndroid = sUserAgent.match(/android/i);
+            var isXiaoMi = sUserAgent.match(/xiaomi/i);
+            /* var isWX = sUserAgent.match(/micromessenger/i) == "micromessenger";
+             var isWeiBo = sUserAgent.match(/weibo/i) == "weibo";
+             var isAlipay = sUserAgent.match(/alipay/i) == "alipay";*/
             if (isIphoneOs) {
                 if (!bForcepc) {
                     window.location.href = iso_url;
@@ -225,7 +222,7 @@
     <img src="../img/logo.jpg"/>
 </div>
 
-<a href="com.qlteacher.quan://" id="openIosApp" style="display: none">ios</a>
+<a href="quanApp://" id="openIosApp" style="display: none">ios</a>
 <a href="com.qlteacher.app.main://quan" id="openAndroidApp" style="display: none">android</a>
 
 <div class="info">如果您还没有安装老师圈app，<br>请点击立即下载</div>
