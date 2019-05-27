@@ -33,7 +33,7 @@
             var isAndroid = sUserAgent.match(/android/i) == "android";
             var isXiaoMi = sUserAgent.match(/xiaomi/i) == "xiaomi";
             if (isAndroid || isXiaoMi) {
-                alert('安卓');
+                alert('安卓-baidu');
                 document.getElementById('openAndroidApp').click();
                 // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
                 // 否则打开a标签的href链接
