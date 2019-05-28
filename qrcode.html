@@ -28,16 +28,14 @@
             let isAndroid = sUserAgent.match(/android/i);
             let isXiaoMi = sUserAgent.match(/xiaomi/i);
             if (isWX) {
-                window.onload = function () {
-                    alert('windowonload');
-                    let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
-                    let tip = document.getElementById('weixin-tip');
-                    let close = document.getElementById('close');
-                    tip.style.height = winHeight + 'px';
-                    tip.style.display = 'block';
-                    close.onclick = function () {
-                        tip.style.display = 'none';
-                    }
+                alert('isWX');
+                let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+                let tip = document.getElementById('weixin-tip');
+                let close = document.getElementById('close');
+                tip.style.height = winHeight + 'px';
+                tip.style.display = 'block';
+                close.onclick = function () {
+                    tip.style.display = 'none';
                 }
             }
             if (isAndroid || isXiaoMi) {
