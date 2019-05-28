@@ -21,22 +21,25 @@
 
         //判断手机是否已经安装了app
         function checkAppInstalled() {
-            var sUserAgent = navigator.userAgent.toLowerCase();
-            var isWX = sUserAgent.match(/micromessenger/i);
-            var isAndroid = sUserAgent.match(/android/i);
-            var isXiaoMi = sUserAgent.match(/xiaomi/i);
+            let sUserAgent = navigator.userAgent.toLowerCase();
+            let isWX = sUserAgent.match(/micromessenger/i);
+            let isAndroid = sUserAgent.match(/android/i);
+            let isXiaoMi = sUserAgent.match(/xiaomi/i);
             if (isWX) {
                 alert('isWX');
-                window.onload = function () {
-                    alert('window.onload');
-                    var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
-                    var tip = document.getElementById('weixin-tip');
-                    var close = document.getElementById('close');
-                    tip.style.height = winHeight + 'px';
-                    tip.style.display = 'block';
-                    close.onclick = function () {
-                        tip.style.display = 'none';
+                window.onload = function(){
+                    let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+                    let btn = document.getElementById('J_weixin');
+                    let tip = document.getElementById('weixin-tip');
+                    let close = document.getElementById('close');
+                    btn.onclick = function(e){
+                        tip.style.height = winHeight + 'px';
+                        tip.style.display = 'block';
+                        return false;
                     };
+                    close.onclick = function(){
+                        tip.style.display = 'none';
+                    }
                 }
             }
             if (isAndroid || isXiaoMi) {
@@ -47,24 +50,24 @@
             }
         }
 
-        var bForcepc = fGetQuery("dv") == "pc";
+        let bForcepc = fGetQuery("dv") == "pc";
 
         function fBrowserRedirect() {
-            var iso_url = "https://itunes.apple.com/cn/app/id1459354618";
-            var android_url = "https://quan.qlteacher.com/assets/app/teacher-quan.apk" + '?timestamp=' + new Date().getTime() + Math.random();
-            var sUserAgent = navigator.userAgent.toLowerCase();
-            var isIphoneOs = sUserAgent.match(/(iPhone|iPad);?/i);
-            var isAndroid = sUserAgent.match(/android/i);
-            var isXiaoMi = sUserAgent.match(/xiaomi/i);
-            var isWX = sUserAgent.match(/micromessenger/i);
-            var isWeiBo = sUserAgent.match(/weibo/i);
-            var isAlipay = sUserAgent.match(/alipay/i);
+            let iso_url = "https://itunes.apple.com/cn/app/id1459354618";
+            let android_url = "https://quan.qlteacher.com/assets/app/teacher-quan.apk" + '?timestamp=' + new Date().getTime() + Math.random();
+            let sUserAgent = navigator.userAgent.toLowerCase();
+            let isIphoneOs = sUserAgent.match(/(iPhone|iPad);?/i);
+            let isAndroid = sUserAgent.match(/android/i);
+            let isXiaoMi = sUserAgent.match(/xiaomi/i);
+            let isWX = sUserAgent.match(/micromessenger/i);
+            let isWeiBo = sUserAgent.match(/weibo/i);
+            let isAlipay = sUserAgent.match(/alipay/i);
             if (isIphoneOs) {
                 if (!bForcepc) {
                     window.location.href = iso_url;
                     /*//微博、支付宝单独判断
                     if (isWeiBo || isAlipay) {
-                        /!* var html = '<a id=\"alink\" href=\"' + iso_url + '\" style=\"visibility: hidden;\"><span id=\"spanId\">下一步</span></a> '
+                        /!* let html = '<a id=\"alink\" href=\"' + iso_url + '\" style=\"visibility: hidden;\"><span id=\"spanId\">下一步</span></a> '
                          layer.open({//这里使用了layer的弹窗组件，你也可以自己写
                              type: 1, content: html, anim: 'up',
                              //style: 'position:fixed; bottom:0; left:0; width: 100%; height: 100%; padding:0; border:none;'
@@ -93,8 +96,8 @@
         }
 
         function fGetQuery(name) {//获取参数值
-            var sUrl = window.location.search.substr(1);
-            var r = sUrl.match(new RegExp("(^|&)" + name + "=([^&]*)(&|$)"));
+            let sUrl = window.location.search.substr(1);
+            let r = sUrl.match(new RegExp("(^|&)" + name + "=([^&]*)(&|$)"));
             return (r == null ? null : unescape(r[2]));
         }
 
@@ -102,33 +105,27 @@
 
 </head>
 <style type="text/css">
-    #weixin-tip {
-        display: none;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background: rgba(0, 0, 0, 0.8);
-        filter: alpha(opacity=80);
-        width: 100%;
-        height: 100%;
-        z-index: 100;
-    }
+    *{margin:0; padding:0;}
+    a{text-decoration: none;}
+    img{max-width: 100%; height: auto;}
 
-    #weixin-tip p {
-        text-align: center;
-        margin-top: 10%;
-        padding: 0 5%;
-        position: relative;
-    }
+    .download{color: #4D4D4D; padding: 7.2% 6.8% 9.3%;}
+    .download .entry-hd{font-size: 2.4em; font-weight: bold; text-align: center;}
+    .download-btn{padding-top: 9%; text-align: center;}
+    .download-btn .android-btn{ width:auto; margin:0 auto;}
 
-    #weixin-tip .close {
+    .footer-bg{background: #2D2D2D; color: #E4E4E4; padding: 3.4% 2%; text-align: center;}
+    .footer-bg .entry-con{font-size: 1em;}
+
+    #weixin-tip{display:none; position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;}
+    #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%; position: relative;}
+    #weixin-tip .close{
         color: #fff;
         padding: 5px;
         font: bold 20px/20px simsun;
         text-shadow: 0 1px 0 #ddd;
         position: absolute;
-        top: 0;
-        left: 5%;
+        top: 0; left: 5%;
     }
 
     body {
@@ -189,14 +186,24 @@
 
 <!--<a href="quanApp://" id="openIosApp" style="display: none">ios</a>
 <a href="com.qlteacher.app.main://quan" id="openAndroidApp" style="display: none">android</a>-->
-
-<div class="info">如果您还没有安装老师圈app，<br>请点击立即下载</div>
-<input type="button" id="btn" name="btn" class="btn_download" onclick="fBrowserRedirect();" value="立即下载"/>
+<div class="page-wrap">
+    <div class="download">
+        <h3 class="entry-hd">
+        </h3>
+        <div class="download-btn"><a href="http://www.xx.com/test.apk" class="android-btn" id="J_weixin"><img src="img/android-btn.png" alt="安卓版下载"></a></div>
+    </div>
+    <div class="footer-bg">
+        <p class="entry-con">注：微信用户请在右上角选择“在浏览器中打开”，再选择下载应用</p>
+    </div>
+</div>
 <div id="weixin-tip">
     <p><img src="img/live_weixin.png" alt="微信打开"/>
         <span id="close" title="关闭" class="close">×</span>
     </p>
 </div>
+<div class="info">如果您还没有安装老师圈app，<br>请点击立即下载</div>
+<input type="button" id="btn" name="btn" class="btn_download" onclick="fBrowserRedirect();" value="立即下载"/>
+
 </body>
 
 
