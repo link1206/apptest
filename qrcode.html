@@ -24,15 +24,22 @@
             let sUserAgent = navigator.userAgent.toLowerCase();
             alert(sUserAgent);
             let isWX = sUserAgent.match(/micromessenger/i);
+            let isQQ = sUserAgent.match(/qqbrowser/i);
             let isWeiBo = sUserAgent.match(/weibo/i);
             let isAlipay = sUserAgent.match(/alipay/i);
             let isAndroid = sUserAgent.match(/android/i);
             let isXiaoMi = sUserAgent.match(/xiaomi/i);
-            if (isWX) {
+            if (isWX || isQQ || isAlipay) {
                 alert('isWX');
                 let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
                 let tip = document.getElementById('weixin-tip');
+                let imgTip = document.getElementById('img-tip');
                 let close = document.getElementById('close');
+                if (isAndroid || isXiaoMi) {
+                    imgTip.src = 'img/android-tip.png';
+                } else {
+                    imgTip.src = 'img/ios-tip.png';
+                }
                 tip.style.height = winHeight + 'px';
                 tip.style.display = 'block';
                 close.onclick = function () {
@@ -185,7 +192,7 @@
     <img src="../img/logo.jpg"/>
 </div>
 <div id="weixin-tip">
-    <p><img src="img/live_weixin.png" alt="浏览器打开"/>
+    <p><img id="img-tip" src="img/android-tip.png" alt="点击右上角，使用浏览器打开"/>
         <span id="close" title="关闭" class="close">×</span>
     </p>
 </div>
