@@ -29,7 +29,8 @@
             let isAlipay = sUserAgent.match(/alipay/i);
             let isAndroid = sUserAgent.match(/android/i);
             let isXiaoMi = sUserAgent.match(/xiaomi/i);
-            if (isWX || isQQ || isAlipay) {
+            let chrome = sUserAgent.match(/applewebkit/i);
+            if (chrome || isWX || isQQ || isAlipay) {
                 alert('isWX');
                 let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
                 let tip = document.getElementById('weixin-tip');
