@@ -30,10 +30,9 @@
                 window.onload = function () {
                     alert('window.onload');
                     var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
-                    var btn = document.getElementById('J_weixin');
                     var tip = document.getElementById('weixin-tip');
                     var close = document.getElementById('close');
-                    btn.onclick = function (e) {
+                    tip.onclick = function (e) {
                         tip.style.height = winHeight + 'px';
                         tip.style.display = 'block';
                         return false;
