@@ -26,7 +26,9 @@
             var isAndroid = sUserAgent.match(/android/i);
             var isXiaoMi = sUserAgent.match(/xiaomi/i);
             if (isWX) {
+                alert('isWX');
                 window.onload = function () {
+                    alert('window.onload');
                     var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
                     var btn = document.getElementById('J_weixin');
                     var tip = document.getElementById('weixin-tip');
