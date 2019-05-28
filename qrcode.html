@@ -18,13 +18,6 @@
                 checkAppInstalled();
             }
         );
-        /* wx.ready(
-             checkAppInstalled()
-         );*/
-        /* window.onload = function(){
-             alert('window.onload');
-             checkAppInstalled();
-         }*/
 
         //判断手机是否已经安装了app
         function checkAppInstalled() {
@@ -32,7 +25,7 @@
             var isWX = sUserAgent.match(/micromessenger/i);
             var isAndroid = sUserAgent.match(/android/i);
             var isXiaoMi = sUserAgent.match(/xiaomi/i);
-            /*if(isWX){
+            if(isWX){
                 window.onload = function(){
                     var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
                     var btn = document.getElementById('J_weixin');
@@ -47,71 +40,12 @@
                         tip.style.display = 'none';
                     };
                 }
-            }*/
+            }
             if (isAndroid || isXiaoMi) {
                 window.location.href = 'com.qlteacher.app.main://quan';
-                //document.getElementById('openAndroidApp').click();
-                /*// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
-                // 否则打开a标签的href链接
-                var isInstalled;
-                //下面是安卓端APP接口调用的地址，自己根据情况去修改
-                var ifrSrc = 'com.qlteacher.app.main.MainActivity://';
-                var ifr = document.createElement('iframe');
-                ifr.src = ifrSrc;
-                ifr.style.display = 'none';
-                ifr.onload = function () {
-                    isInstalled = true;
-                    alert(isInstalled);
-                    document.getElementById('openApp0').click();
-                };
-                ifr.onerror = function () {
-                    isInstalled = false;
-                    alert(isInstalled);
-                };
-                document.body.appendChild(ifr);
-                setTimeout(function () {
-                    document.body.removeChild(ifr);
-                }, 1000);*/
 
             } else if (navigator.userAgent.match(/(iPhone|iPad);?/i)) {
                 window.location.href = 'quanApp://';
-                /*
-                //ios判断
-                document.getElementById('openIosApp').onclick = function (e) {
-                    // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
-                    // 否则打开a标签的href链接
-                    alert('openIosApp');
-                    window.location.href =  'com.qlteacher.quan://';
-                    var ifr = document.createElement('iframe');
-                    ifr.src = 'com.qlteacher.quan://';
-                    ifr.style.display = 'none';
-                    document.body.appendChild(ifr);
-                    window.setTimeout(function () {
-                        document.body.removeChild(ifr);
-                    }, 3000)
-                };*/
-                /*document.getElementById('openIosApp').click();*/
-
-
-                /*var isInstalled;
-                //下面是IOS调用的地址，自己根据情况去修改
-                var ifrSrc = 'com.qlteacher.quan://';
-                var ifr = document.createElement('iframe');
-                ifr.src = ifrSrc;
-                ifr.style.display = 'none';
-                ifr.onload = function () {
-                    isInstalled = true;
-                    alert(isInstalled);
-                    document.getElementById('openApp1').click();
-                };
-                ifr.onerror = function () {
-                    isInstalled = false;
-                    alert(isInstalled);
-                };
-                document.body.appendChild(ifr);
-                setTimeout(function () {
-                    document.body.removeChild(ifr);
-                }, 1000);*/
             }
         }
 
@@ -158,9 +92,6 @@
             } else {
                 alert("十分抱歉，目前老师圈App暂时只支持安卓手机和苹果手机！");
             }
-            /*if (bIsIpad || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM) {
-
-            }*/
         }
 
         function fGetQuery(name) {//获取参数值
@@ -168,15 +99,6 @@
             var r = sUrl.match(new RegExp("(^|&)" + name + "=([^&]*)(&|$)"));
             return (r == null ? null : unescape(r[2]));
         }
-
-        /*function fShowVerBlock() {
-            if (bForcepc) {
-                document.getElementById("dv_block").style.display = "block";
-            }
-            else {
-                document.getElementById("ad_block").style.display = "block";
-            }
-        }*/
 
     </script>
 
@@ -239,8 +161,8 @@
     <img src="../img/logo.jpg"/>
 </div>
 
-<a href="quanApp://" id="openIosApp" style="display: none">ios</a>
-<a href="com.qlteacher.app.main://quan" id="openAndroidApp" style="display: none">android</a>
+<!--<a href="quanApp://" id="openIosApp" style="display: none">ios</a>
+<a href="com.qlteacher.app.main://quan" id="openAndroidApp" style="display: none">android</a>-->
 
 <div class="info">如果您还没有安装老师圈app，<br>请点击立即下载</div>
 <input type="button" id="btn" name="btn" class="btn_download" onclick="fBrowserRedirect();" value="立即下载"/>
