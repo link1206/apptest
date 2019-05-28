@@ -12,6 +12,7 @@
     <!--<script type="text/javascript" src="../lib/weixin/jweixin-1.0.0.js"></script>-->
 
     <script type="text/javascript">
+
         $(document).ready(
             function () {
                 checkAppInstalled();
@@ -27,12 +28,29 @@
 
         //判断手机是否已经安装了app
         function checkAppInstalled() {
-            alert('checkAppInstalled');
             var sUserAgent = navigator.userAgent.toLowerCase();
+            var isWX = sUserAgent.match(/micromessenger/i);
             var isAndroid = sUserAgent.match(/android/i);
             var isXiaoMi = sUserAgent.match(/xiaomi/i);
+            /*if(isWX){
+                window.onload = function(){
+                    var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+                    var btn = document.getElementById('J_weixin');
+                    var tip = document.getElementById('weixin-tip');
+                    var close = document.getElementById('close');
+                    btn.onclick = function(e){
+                        tip.style.height = winHeight + 'px';
+                        tip.style.display = 'block';
+                        return false;
+                    };
+                    close.onclick = function(){
+                        tip.style.display = 'none';
+                    };
+                }
+            }*/
             if (isAndroid || isXiaoMi) {
-                document.getElementById('openAndroidApp').click();
+                window.location.href = 'com.qlteacher.app.main://quan';
+                //document.getElementById('openAndroidApp').click();
                 /*// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
                 // 否则打开a标签的href链接
                 var isInstalled;
@@ -56,7 +74,6 @@
                 }, 1000);*/
 
             } else if (navigator.userAgent.match(/(iPhone|iPad);?/i)) {
-                alert('ios');
                 window.location.href = 'quanApp://';
                 /*
                 //ios判断
@@ -107,9 +124,9 @@
             var isIphoneOs = sUserAgent.match(/(iPhone|iPad);?/i);
             var isAndroid = sUserAgent.match(/android/i);
             var isXiaoMi = sUserAgent.match(/xiaomi/i);
-            /* var isWX = sUserAgent.match(/micromessenger/i) == "micromessenger";
-             var isWeiBo = sUserAgent.match(/weibo/i) == "weibo";
-             var isAlipay = sUserAgent.match(/alipay/i) == "alipay";*/
+            var isWX = sUserAgent.match(/micromessenger/i);
+            var isWeiBo = sUserAgent.match(/weibo/i);
+            var isAlipay = sUserAgent.match(/alipay/i);
             if (isIphoneOs) {
                 if (!bForcepc) {
                     window.location.href = iso_url;
