@@ -23,11 +23,13 @@
         function checkAppInstalled() {
             let sUserAgent = navigator.userAgent.toLowerCase();
             let isWX = sUserAgent.match(/micromessenger/i);
+            let isWeiBo = sUserAgent.match(/weibo/i);
+            let isAlipay = sUserAgent.match(/alipay/i);
             let isAndroid = sUserAgent.match(/android/i);
             let isXiaoMi = sUserAgent.match(/xiaomi/i);
             if (isWX) {
-                alert('isWX');
                 window.onload = function () {
+                    alert('window.onload');
                     let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
                     let tip = document.getElementById('weixin-tip');
                     let close = document.getElementById('close');
@@ -55,9 +57,6 @@
             let isIphoneOs = sUserAgent.match(/(iPhone|iPad);?/i);
             let isAndroid = sUserAgent.match(/android/i);
             let isXiaoMi = sUserAgent.match(/xiaomi/i);
-            let isWX = sUserAgent.match(/micromessenger/i);
-            let isWeiBo = sUserAgent.match(/weibo/i);
-            let isAlipay = sUserAgent.match(/alipay/i);
             if (isIphoneOs) {
                 if (!bForcepc) {
                     window.location.href = iso_url;
@@ -75,7 +74,7 @@
                     }*/
                 }
             } else if (isAndroid) {
-                $("#btn").attr("value", "正在后台下载");
+                $("#download_btn").attr("value", "正在后台下载");
                 if (!bForcepc) {
                     window.location.href = android_url;
                     //微信和微博单独判断
@@ -187,12 +186,12 @@
     <img src="../img/logo.jpg"/>
 </div>
 <div id="weixin-tip">
-    <p><img src="img/live_weixin.png" alt="微信打开"/>
+    <p><img src="img/live_weixin.png" alt="浏览器打开"/>
         <span id="close" title="关闭" class="close">×</span>
     </p>
 </div>
 <div class="info">如果您还没有安装老师圈app，<br>请点击立即下载</div>
-<input type="button" id="btn" name="btn" class="btn_download" onclick="fBrowserRedirect();" value="立即下载"/>
+<input type="button" id="download_btn" name="btn" class="btn_download" onclick="fBrowserRedirect();" value="立即下载"/>
 
 </body>
 
