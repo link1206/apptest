@@ -12,7 +12,7 @@
     <!--<script type="text/javascript" src="../lib/weixin/jweixin-1.0.0.js"></script>-->
 
     <script type="text/javascript">
-
+        alert(typeof ($));
         $(document).ready(
             function () {
                 checkAppInstalled();
@@ -25,13 +25,10 @@
             alert(sUserAgent);
             let isWX = sUserAgent.match(/micromessenger/i);
             let isQQ = sUserAgent.match(/qqbrowser/i);
-            let isWeiBo = sUserAgent.match(/weibo/i);
             let isAlipay = sUserAgent.match(/alipay/i);
             let isAndroid = sUserAgent.match(/android/i);
             let isXiaoMi = sUserAgent.match(/xiaomi/i);
-            let chrome = sUserAgent.match(/applewebkit/i);
-            if (chrome || isWX || isQQ || isAlipay) {
-                alert('isWX');
+            if (isWX || isQQ || isAlipay) {
                 let winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
                 let tip = document.getElementById('weixin-tip');
                 let imgTip = document.getElementById('img-tip');
